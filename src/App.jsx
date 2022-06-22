@@ -26,7 +26,7 @@ function App() {
   }, [])
 
   const createUser = newUser => {
-    axios.put(URL, newUser)
+    axios.post(URL, newUser)
     .then(res => {
       console.log(res.data)
       getUsers()
