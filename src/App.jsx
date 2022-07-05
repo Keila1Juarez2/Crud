@@ -5,7 +5,7 @@ import Form from './components/Form'
 import InformationUser from './components/InformationUser'
 import { useForm } from 'react-hook-form'
 
-const URL = ('https://users-crud1.herokuapp.com/users/')
+const URL = 'https://users-crud1.herokuapp.com/users/'
 
 function App() {
 
@@ -63,34 +63,34 @@ function App() {
       <div className='centered-object'>
         <button className='button' onClick={showForm}>{isShowForm ? 'Hide' :'Create User'}</button>
       </div>
-    <div className="App">
-      <div>
+      <div className='App'>
+          {
+            isShowForm &&
+            <Form 
+            createUser={createUser}
+            updateUserById={updateUserById}
+            objectUpdate={objectUpdate}
+            handleSubmit={handleSubmit}
+            reset={reset}
+            register={register}
+            />
+          }
+        </div>
+      <div className="App"> 
         {
-          isShowForm &&
-          <Form 
-          createUser={createUser}
-          updateUserById={updateUserById}
-          objectUpdate={objectUpdate}
-          handleSubmit={handleSubmit}
-          reset={reset}
-          register={register}
-          />
+          users?.map(user => (
+            <InformationUser 
+            key={user.id}
+            user={user}
+            URL={URL}
+            getUsers={getUsers}
+            setObjectUpdate={setObjectUpdate}
+            setIsShowForm={setIsShowForm}
+            reset={reset}
+            />
+          ))
         }
       </div>
-      {
-        users?.map(user => (
-          <InformationUser 
-          key={user.id}
-          user={user}
-          URL={URL}
-          getUsers={getUsers}
-          setObjectUpdate={setObjectUpdate}
-          setIsShowForm={setIsShowForm}
-          reset={reset}
-          />
-        ))
-      }
-    </div>
     </div>
   )
 }

@@ -1,24 +1,7 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { useForm } from 'react-hook-form'
 
-const Form = ({createUser, updateUserById, objectUpdate, handleSubmit, reset, register}) => {
-
-    const createNewUser = () => {
-        const createUser = {
-          first_name: user.first_name,
-          last_name: user.last_name,
-          email: user.email,
-          password: user.password,
-          birthday: user.birthday
-        }
-    
-        axios.put(URL, createUser)
-        .then(res => {
-          console.log(res.data)
-          getUsers()
-        })
-        .catch(err => console.log(err))
-      }
+const Form = ({createUser, updateUserById, objectUpdate, handleSubmit, reset, register}) => {    
 
     const defaultValuesForm = {
         first_name: "",
@@ -62,7 +45,7 @@ const Form = ({createUser, updateUserById, objectUpdate, handleSubmit, reset, re
                 <label htmlFor="birthday"><i class="fa-solid fa-cake-candles"></i></label>
                 <input type="text" id='birthday' {...register('birthday')}/>
             </div>
-            <button onClick={createNewUser}>Submit</button>
+            <button>Submit</button>
         </form>
     </div>
   )

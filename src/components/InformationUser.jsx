@@ -1,4 +1,4 @@
-import axios from 'axios'
+ import axios from 'axios'
 import React from 'react'
 
 const InformationUser = ({user, URL, getUsers, setObjectUpdate, setIsShowForm, reset}) => {
